@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finanzas Básicas para Líderes de Ollas Comunes - Ubuntu</title>
+    <title>Finanzas Básicas para Líderes de Ollas Comunes</title>
     <style>
         :root {
             --rojo-p: #8B0000;
@@ -14,70 +14,55 @@
             --blanco: #FFFFFF;
         }
 
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--gris-f); color: #333; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--gris-f); color: #333; }
 
         /* --- CABECERA --- */
         header { 
             background: linear-gradient(135deg, var(--oscuro), #2c3e50); 
-            color: white; padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--rojo-p);
+            color: white; padding: 40px 20px; text-align: center; border-bottom: 5px solid var(--rojo-p);
         }
-        .motto { font-style: italic; color: var(--dorado); font-size: 1.1rem; margin-top: 10px; display: block; letter-spacing: 1px; }
+        .motto { font-style: italic; color: var(--dorado); font-size: 1rem; margin-top: 10px; display: block; }
 
         /* --- NAVEGACIÓN --- */
         .session-nav {
             display: flex; overflow-x: auto; background: var(--blanco); 
             position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            justify-content: center;
         }
         .s-tab {
-            padding: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem;
-            color: #666; border-bottom: 4px solid transparent; transition: 0.3s;
+            padding: 15px 25px; cursor: pointer; font-weight: bold; font-size: 0.85rem;
+            color: #666; border-bottom: 4px solid transparent; white-space: nowrap; transition: 0.3s;
         }
         .s-tab.active { color: var(--rojo-p); border-bottom: 4px solid var(--rojo-p); background: #fffafa; }
 
         /* --- CONTENIDO --- */
-        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
         
-        .theory-section { 
-            background: var(--blanco); border-radius: 12px; padding: 40px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
-            border-left: 8px solid var(--rojo-p);
-        }
-        h2 { color: var(--rojo-p); font-size: 1.8rem; margin-top: 0; }
-        h4 { color: #777; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px; }
+        .card { background: white; border-radius: 12px; padding: 35px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 25px; border-left: 8px solid var(--rojo-p); }
+        h2 { color: var(--rojo-p); margin-top: 0; }
+        .theory-text { font-size: 1.05rem; line-height: 1.7; color: #444; }
 
-        .concept-card { 
-            background: #f9f9f9; border: 1px solid #eee; padding: 20px; 
-            border-radius: 8px; margin: 20px 0; 
-        }
-        .highlight { color: var(--rojo-p); font-weight: bold; }
-
-        /* --- SIMULACIÓN --- */
-        .sim-section { 
-            background: var(--oscuro); color: white; border-radius: 12px; padding: 35px; 
-        }
-        .sim-section h3 { color: var(--rojo-c); margin-top: 0; font-size: 1.4rem; }
-        .scenario { background: #1e1e1e; padding: 20px; border-radius: 8px; margin: 15px 0; border: 1px solid #333; }
+        /* --- LABORATORIO DE VALIDACIÓN --- */
+        .lab-box { background: var(--oscuro); color: white; border-radius: 12px; padding: 30px; }
+        .lab-box h3 { color: var(--rojo-c); margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .question { background: #252525; padding: 20px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #333; }
         
-        textarea { 
-            width: 100%; padding: 15px; border-radius: 6px; border: none; background: #2d2d2d; 
-            color: white; font-size: 1rem; margin-top: 10px; box-sizing: border-box;
+        input[type="number"], select { 
+            width: 100%; padding: 12px; border-radius: 6px; border: none; background: #333; color: white; font-size: 1.1rem; margin-top: 10px; box-sizing: border-box;
         }
 
-        .btn-action { 
-            background: var(--rojo-c); color: white; border: none; padding: 15px 30px; 
-            width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; 
-            font-size: 1rem; margin-top: 20px; transition: 0.3s;
+        .btn-verify { 
+            background: var(--rojo-c); color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; margin-top: 15px; 
         }
-        .btn-action:hover { background: #cc0000; transform: translateY(-2px); }
+        .feedback { margin-top: 15px; padding: 15px; border-radius: 6px; display: none; font-weight: bold; text-align: center; }
+        .success { background: #1b5e20; color: #c8e6c9; border: 1px solid #2e7d32; }
+        .error { background: #b71c1c; color: #ffcdd2; border: 1px solid #c62828; }
 
-        footer { text-align: center; padding: 40px; color: #999; font-size: 0.8rem; }
+        footer { text-align: center; padding: 30px; color: #888; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <h4>CURSO DE ESPECIALIZACIÓN</h4>
     <h1>FINANZAS BÁSICAS PARA LÍDERES DE OLLAS COMUNES</h1>
     <span class="motto">"Cosechando libertad, sembrando estabilidad"</span>
 </header>
@@ -88,133 +73,116 @@
     <div id="content"></div>
 </div>
 
-<footer>
-    RED UBUNTU PERÚ - 2026<br>
-    Desarrollo de Capacidades para la Gestión Comunitaria
-</footer>
+<footer>RED UBUNTU PERÚ - 2026</footer>
 
 <script>
-const dataSesiones = [
+const curso = [
     {
         n: "S0",
-        t: "Ética y Transparencia en la Gestión",
-        teoria: `
-            <p>La base de las finanzas en una Olla Común no son los números, sino la <strong>ética</strong>. Como líder, manejas recursos que pertenecen a todas las familias de tu comunidad.</p>
-            <div class="concept-card">
-                <strong>¿Qué es la Transparencia Activa?</strong><br>
-                Es la práctica de mostrar las cuentas antes de que alguien las pida. Esto genera un escudo protector contra rumores y fortalece la unidad del grupo.
-            </div>
-            <p>En esta sesión definiremos el "Pacto de Confianza" y cómo la organización profesional ayuda a conseguir más donaciones y apoyo del Estado.</p>
-        `,
-        sim: "Escribe 2 acciones concretas que realizarás para que cualquier vecino pueda verificar los gastos de la semana de forma fácil.",
-        placeholder: "Ejemplo: Pegar un resumen de boletas en la puerta..."
+        t: "Ética y Compromiso de Transparencia",
+        teoria: "La transparencia es la base de la Red Ubuntu. Como líder, tu primera responsabilidad es la rendición de cuentas proactiva. Un manejo financiero ético previene conflictos y asegura que la ayuda llegue a quienes más lo necesitan.",
+        pregunta: "¿Cuál es el pilar fundamental que asegura la paz comunitaria en una Olla Común?",
+        opciones: ["Ocultar gastos", "Transparencia Activa", "Decidir sola"],
+        correcta: "Transparencia Activa",
+        tipo: "choice"
     },
     {
         n: "S1",
-        t: "Cálculo del Costo por Ración y Merma",
-        teoria: `
-            <p>Para que la olla sea sostenible, debemos saber exactamente cuánto cuesta cada plato. No solo es el arroz; es el gas, el aceite y el transporte.</p>
-            <div class="concept-card">
-                <strong>La Merma Técnica:</strong><br>
-                Es el desperdicio natural (cáscaras, huesos, limpieza). Si compras 10kg de papa, solo usas 8kg reales. <span class="highlight">Tu costo debe calcularse sobre lo que realmente se cocina.</span>
-            </div>
-            <p>Aprenderemos a sumar los costos directos e indirectos para definir una cuota justa que no genere pérdidas.</p>
-        `,
-        sim: "Si gastas S/100 en alimentos y S/20 en gas para 60 platos, ¿cuál es el costo real de cada ración? Considera que los insumos subieron un 5% por transporte.",
-        placeholder: "Realiza tu cálculo aquí..."
+        t: "Cálculo de Costo Real y Merma",
+        teoria: "El costo de una ración no es solo el insumo. Se debe sumar el costo de transporte, gas y condimentos. Además, consideramos la <strong>Merma</strong> (lo que se pierde al limpiar alimentos). <br><br><strong>Fórmula:</strong> (Insumos + Gas + Transporte) / Número de raciones.",
+        pregunta: "Si gastas S/150 en víveres, S/10 en mototaxi y S/20 en gas para 100 raciones, ¿cuál es el costo exacto por ración?",
+        correcta: 1.80,
+        tipo: "math"
     },
     {
         n: "S2",
-        t: "Manejo del Libro de Caja Diario",
-        teoria: `
-            <p>El Libro de Caja es el corazón de tu administración. Cada sol que entra y cada sol que sale debe estar registrado con fecha y motivo.</p>
-            <div class="concept-card">
-                <strong>Reglas del Registro:</strong><br>
-                1. No anotar nada sin comprobante (boleta o recibo).<br>
-                2. Realizar el 'Arqueo de Caja' (contar dinero físico) todas las tardes.<br>
-                3. Separar el dinero personal del dinero de la Olla.
-            </div>
-        `,
-        sim: "ESCENARIO: Inicias con S/40. Recibes S/100 de cuotas. Gastas S/115 en mercado y S/10 en mototaxi. ¿Cuál es tu saldo final y qué anotaciones harías?",
-        placeholder: "Saldo inicial + Ingresos - Egresos = ..."
+        t: "Libro de Caja y Arqueo Diario",
+        teoria: "El Libro de Caja registra el flujo de dinero. El saldo debe ser exacto. <br><strong>Fórmula:</strong> Saldo Inicial + Ingresos - Egresos = Saldo Final.",
+        pregunta: "Inicias con S/50. Recibes S/120 en cuotas. Gastas S/95 en el mercado. ¿Cuál es el saldo final que debe haber en caja?",
+        correcta: 75,
+        tipo: "math"
     },
     {
         n: "S3",
-        t: "Compras Mayoristas y Almacén",
-        teoria: `
-            <p>Una buena líder financiera sabe comprar. Comprar por kilos diarios es perder dinero. La meta es la <strong>compra por volumen</strong>.</p>
-            <div class="concept-card">
-                <strong>Gestión de Almacén:</strong><br>
-                Uso del sistema <span class="highlight">PEPS</span> (Primero en Entrar, Primero en Salir). Esto asegura que los alimentos no se venzan y que la inversión de la comunidad esté segura y bajo control.
-            </div>
-        `,
-        sim: "Compara: 1 litro de aceite cuesta S/8.50. El bidón de 20 litros cuesta S/150. ¿Cuánto dinero ahorra la olla si compra el bidón?",
-        placeholder: "Calcula el ahorro total..."
+        t: "Compras Mayoristas y Ahorro",
+        teoria: "La compra estratégica reduce costos. Siempre es mejor comprar por saco/volumen que por unidad.",
+        pregunta: "El kilo de arroz cuesta S/4.50. El saco de 50kg cuesta S/190. ¿Cuánto ahorras en total comprando el saco?",
+        correcta: 35,
+        tipo: "math"
     },
     {
         n: "S4",
-        t: "Presupuesto y Rendición de Cuentas",
-        teoria: `
-            <p>El presupuesto es planificar el próximo mes para que no falte nada. La rendición de cuentas es el momento de liderazgo más importante: explicar los resultados a la asamblea.</p>
-            <div class="concept-card">
-                <strong>La Pizarra de Transparencia:</strong><br>
-                Una herramienta visual donde se resume: Total Ingresos | Total Gastos | Saldo Actual. La claridad elimina la sospecha.
-            </div>
-        `,
-        sim: "Diseña un mensaje corto y claro para la asamblea explicando por qué el saldo de este mes es menor debido a una reparación de la cocina.",
-        placeholder: "Escribe tu discurso o mensaje visual..."
+        t: "Rendición de Cuentas Pública",
+        teoria: "La rendición se hace mediante pizarras visibles. Debe incluir: Total Ingresos, Total Gastos y Saldo.",
+        pregunta: "Si los socios ven las cuentas claras, ¿qué aumenta en la organización?",
+        opciones: ["La sospecha", "La confianza y participación", "Los problemas"],
+        correcta: "La confianza y participación",
+        tipo: "choice"
     },
     {
         n: "S5",
-        t: "Sostenibilidad y Fondos de Reserva",
-        teoria: `
-            <p>La meta final es que la Olla Común sea <strong>autosostenible</strong>. Esto se logra creando fondos de reserva para emergencias e invirtiendo en pequeños proyectos productivos.</p>
-            <div class="concept-card">
-                <strong>Autonomía Financiera:</strong><br>
-                Es la capacidad de la organización para generar sus propios recursos sin depender exclusivamente de donaciones externas.
-            </div>
-        `,
-        sim: "¿Qué actividad pequeña (ej. venta de un producto extra) podría iniciar tu olla para generar S/100 adicionales al mes para un fondo de emergencia?",
-        placeholder: "Propón una idea de negocio comunitario..."
+        t: "Sostenibilidad y Futuro",
+        teoria: "La meta es la autonomía. Un fondo de reserva del 5% de los ingresos mensuales ayuda a cubrir emergencias de infraestructura (ej. arreglar la cocina).",
+        pregunta: "Si tu Olla Común recauda S/2000 al mes, ¿cuánto sería el ahorro mensual si destinan el 5% a reserva?",
+        correcta: 100,
+        tipo: "math"
     }
 ];
 
-function init() {
+function renderNav() {
     const nav = document.getElementById('nav');
-    dataSesiones.forEach((s, i) => {
-        const tab = document.createElement('div');
-        tab.className = `s-tab ${i===0?'active':''}`;
-        tab.innerText = s.n + ": " + s.t.split(' ')[0];
-        tab.onclick = () => render(i);
-        nav.appendChild(tab);
+    curso.forEach((s, i) => {
+        const t = document.createElement('div');
+        t.className = `s-tab ${i===0?'active':''}`;
+        t.innerText = s.n;
+        t.onclick = () => loadSession(i);
+        nav.appendChild(t);
     });
-    render(0);
 }
 
-function render(idx) {
-    const s = dataSesiones[idx];
+function loadSession(idx) {
+    const s = curso[idx];
     document.querySelectorAll('.s-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
     
+    let inputHtml = s.tipo === "math" 
+        ? `<input type="number" id="ans" placeholder="Ingresa el monto en S/">`
+        : `<select id="ans"><option value="">Selecciona una respuesta...</option>${s.opciones.map(o => `<option value="${o}">${o}</option>`).join('')}</select>`;
+
     document.getElementById('content').innerHTML = `
-        <div class="theory-section">
-            <h4>${s.n} | TEORÍA APLICADA</h4>
+        <div class="card">
             <h2>${s.t}</h2>
-            <div>${s.teoria}</div>
+            <div class="theory-text"><p>${s.teoria}</p></div>
         </div>
 
-        <div class="sim-section">
-            <h3>🕹️ LABORATORIO DE GESTIÓN</h3>
-            <div class="scenario">
-                <p><strong>RETO:</strong> ${s.sim}</p>
-                <textarea rows="4" placeholder="${s.placeholder}"></textarea>
+        <div class="lab-box">
+            <h3>🕹️ VALIDACIÓN DE COMPETENCIA</h3>
+            <div class="question">
+                <p><strong>DESAFÍO:</strong> ${s.pregunta}</p>
+                ${inputHtml}
             </div>
-            <button class="btn-action" onclick="alert('Registro guardado. ¡Excelente gestión, lideresa!')">VALIDAR APRENDIZAJE</button>
+            <button class="btn-verify" onclick="check(${idx})">VERIFICAR RESPUESTA</button>
+            <div id="feedback" class="feedback"></div>
         </div>
     `;
-    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-init();
+function check(idx) {
+    const userAns = document.getElementById('ans').value;
+    const s = curso[idx];
+    const feedback = document.getElementById('feedback');
+    feedback.style.display = "block";
+
+    if (userAns == s.correcta) {
+        feedback.innerText = "¡EXCELENTE! Respuesta correcta. Has validado esta competencia técnica.";
+        feedback.className = "feedback success";
+    } else {
+        feedback.innerText = "Respuesta incorrecta. Revisa la teoría y vuelve a calcular.";
+        feedback.className = "feedback error";
+    }
+}
+
+renderNav();
+loadSession(0);
 </script>
 
 </body>
