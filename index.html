@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialización en Finanzas - Ubuntu 2026</title>
+    <style>
+        :root {
+            --rojo-p: #8B0000;
+            --rojo-c: #FF3232;
+            --oscuro: #121212;
+            --dorado: #D4AF37;
+            --gris-f: #F8F9FA;
+        }
+
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--gris-f); color: #2d3436; }
+
+        /* --- HEADER ESPECÍFICO --- */
+        .course-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1554224155-1696413565d3?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover; background-position: center;
+            color: white; padding: 80px 20px; text-align: center;
+        }
+
+        .breadcrumb { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--rojo-c); font-weight: bold; }
+        
+        /* --- NAVEGACIÓN DE SESIONES --- */
+        .session-nav {
+            display: grid; grid-template-columns: repeat(6, 1fr);
+            background: var(--oscuro); sticky; top: 0; z-index: 100;
+        }
+        .s-tab {
+            padding: 20px 10px; color: #888; text-align: center; cursor: pointer;
+            font-size: 0.75rem; font-weight: bold; border-bottom: 3px solid transparent; transition: 0.3s;
+        }
+        .s-tab:hover { color: white; background: #1a1a1a; }
+        .s-tab.active { color: var(--rojo-c); border-bottom: 3px solid var(--rojo-c); background: #1a1a1a; }
+
+        /* --- CONTENIDO --- */
+        .content-container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .lesson-card {
+            background: white; border-radius: 16px; padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 8px solid var(--rojo-p);
+        }
+
+        .meta-info { display: flex; gap: 20px; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .meta-item { font-size: 0.85rem; color: #636e72; }
+        .meta-item strong { color: var(--oscuro); display: block; text-transform: uppercase; font-size: 0.7rem; }
+
+        h2 { color: var(--rojo-p); font-size: 2rem; margin-top: 0; }
+        .theory-text { line-height: 1.8; font-size: 1.1rem; color: #444; }
+        
+        .expert-quote {
+            background: #fff5f5; border-left: 4px solid var(--rojo-c);
+            padding: 20px; margin: 30px 0; font-style: italic; border-radius: 0 12px 12px 0;
+        }
+
+        /* --- ÁREA PRÁCTICA --- */
+        .lab-box {
+            background: #f1f2f6; border-radius: 12px; padding: 30px; margin-top: 40px;
+            border: 1px dashed #ccc;
+        }
+        .lab-box h4 { margin-top: 0; color: var(--oscuro); display: flex; align-items: center; gap: 10px; }
+        .input-area {
+            width: 100%; border: 2px solid #ddd; border-radius: 8px; padding: 15px;
+            font-family: inherit; font-size: 1rem; margin: 15px 0; box-sizing: border-box;
+        }
+        .btn-submit {
+            background: var(--rojo-p); color: white; border: none; padding: 15px 30px;
+            border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s;
+        }
+        .btn-submit:hover { background: var(--rojo-c); transform: translateY(-2px); }
+
+        footer { text-align: center; padding: 40px; color: #999; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="course-hero">
+    <span class="breadcrumb">Programa de Liderazgo Ubuntu</span>
+    <h1>Finanzas Básicas para Líderes de Ollas Comunes</h1>
+    <p>Domina el lenguaje del dinero para construir una comunidad sólida y transparente.</p>
+</div>
+
+<nav class="session-nav" id="sessionNav"></nav>
+
+<div class="content-container">
+    <div id="lessonContent"></div>
+</div>
+
+<footer>
+    <p>© 2026 UBUNTU - Cosechando libertad, sembrando estabilidad</p>
+</footer>
+
+<script>
+const dataFinanzas = [
+    {
+        n: "Sesión 0",
+        t: "Introducción y Ética del Tesorero",
+        obj: "Establecer la base moral y el cronograma de aprendizaje del curso.",
+        cont: "Bienvenida al curso de especialización. En esta sesión introductoria, definimos la misión de la Olla Común no solo como asistencia alimentaria, sino como una entidad económica que requiere transparencia absoluta. Analizaremos por qué el manejo del dinero es una responsabilidad política y comunitaria en Junín.",
+        tip: "La honestidad no se presume, se demuestra con boletas y cuentas claras cada día.",
+        lab: "Redacta tu Compromiso de Transparencia: ¿Qué 3 reglas personales seguirás para que nadie dude de tu gestión?"
+    },
+    {
+        n: "Sesión 1",
+        t: "Ingeniería de Costos y Mermas",
+        obj: "Calcular el costo real de una ración de comida.",
+        cont: "Aprenderás a diferenciar entre costo directo (insumos) y costo indirecto (gas, transporte, condimentos). Introduciremos el concepto técnico de 'Merma': la parte del alimento que se pierde en la limpieza y cocción, y cómo esto afecta el precio final por plato.",
+        tip: "Si compras 10kg de papa, solo usas 8.5kg. Ese 1.5kg de merma debe estar en tu presupuesto.",
+        lab: "Reto Técnico: Si gastas S/200 en insumos para 100 platos, pero el gas y transporte suman S/30 extras, ¿cuál es el costo real de cada plato?"
+    },
+    {
+        n: "Sesión 2",
+        t: "Control de Flujo de Caja Diario",
+        obj: "Dominar el registro de ingresos y egresos en tiempo real.",
+        cont: "El flujo de caja es el corazón de la olla. Aprenderemos a usar el libro de caja. Veremos cómo registrar las cuotas de los socios, las donaciones en efectivo y cada gasto menor, por pequeño que sea. El objetivo es que el saldo físico siempre coincida con el saldo en papel.",
+        tip: "Nunca mezcles tu dinero personal con el dinero de la organización, ni por un minuto.",
+        lab: "Simulacro: Inicias con S/50. Recibes cuotas por S/120. Gastas S/85 en mercado y S/10 en mototaxi. ¿Cuánto debe haber exactamente en tu caja?"
+    },
+    {
+        n: "Sesión 3",
+        t: "Compras Estratégicas y Almacén",
+        obj: "Optimizar el presupuesto mediante compras por volumen.",
+        cont: "Analizaremos la economía de escala: por qué comprar por sacos es un 20% más barato que comprar por kilos. Aprenderás a llevar un 'Kardex' de almacén para controlar que nada se venza o se pierda, asegurando que la inversión comunitaria rinda al máximo.",
+        tip: "El mejor ahorro no es gastar menos, sino comprar mejor calidad al menor precio mayorista.",
+        lab: "Diseña un Plan de Abastecimiento Mensual: ¿Qué productos comprarías hoy para ahorrar durante todo el mes de febrero?"
+    },
+    {
+        n: "Sesión 4",
+        t: "Auditoría Social y Pizarras de Transparencia",
+        obj: "Comunicar los resultados financieros a la asamblea.",
+        cont: "Aprenderás técnicas de visualización de datos simples para personas que no saben de contabilidad. Diseñaremos pizarras de transparencia donde se publiquen semanalmente los gastos, de modo que toda la comunidad sea co-responsable de la vigilancia del dinero.",
+        tip: "Una comunidad informada es una comunidad que apoya y confía en su líder.",
+        lab: "Dibuja o describe: ¿Cómo organizarías la información en una pizarra pública para que cualquier vecina entienda en qué se gastó el dinero?"
+    },
+    {
+        n: "Sesión 5",
+        t: "Sostenibilidad y Micro-Proyectos",
+        obj: "Generar excedentes para la reinversión comunitaria.",
+        cont: "En la sesión final, veremos cómo pasar de la subsistencia a la inversión. Analizaremos cómo crear pequeños fondos de ahorro para emergencias o para iniciar micro-emprendimientos (como la venta de pan o derivados) que generen ingresos extra para la Olla Común.",
+        tip: "La meta final de una buena administración es que la organización deje de depender solo de donaciones.",
+        lab: "Idea de Inversión: Con un excedente de S/200, ¿qué actividad productiva podrías iniciar en tu Olla Común?"
+    }
+];
+
+function renderNav() {
+    const nav = document.getElementById('sessionNav');
+    dataFinanzas.forEach((s, i) => {
+        const tab = document.createElement('div');
+        tab.className = `s-tab ${i === 0 ? 'active' : ''}`;
+        tab.innerText = s.n;
+        tab.onclick = () => loadSession(i);
+        nav.appendChild(tab);
+    });
+}
+
+function loadSession(index) {
+    const s = dataFinanzas[index];
+    const content = document.getElementById('lessonContent');
+    
+    // Actualizar tabs
+    document.querySelectorAll('.s-tab').forEach((t, i) => {
+        t.className = i === index ? 's-tab active' : 's-tab';
+    });
+
+    content.innerHTML = `
+        <div class="lesson-card">
+            <div class="meta-info">
+                <div class="meta-item"><strong>Módulo</strong> Finanzas Estratégicas</div>
+                <div class="meta-item"><strong>Nivel</strong> Especialización</div>
+                <div class="meta-item"><strong>Duración</strong> 90 Minutos</div>
+            </div>
+            <span style="color:var(--rojo-c); font-weight:bold; font-size:0.9rem;">${s.n.toUpperCase()}</span>
+            <h2>${s.t}</h2>
+            <div class="theory-text">
+                <p><strong>OBJETIVO TÉCNICO:</strong> ${s.obj}</p>
+                <p>${s.cont}</p>
+            </div>
+            
+            <div class="expert-quote">
+                <strong>PERSPECTIVA DE LA LIDERESA:</strong><br>
+                "${s.tip}"
+            </div>
+
+            <div class="lab-box">
+                <h4>🕹️ LABORATORIO DE APLICACIÓN PRÁCTICA</h4>
+                <p>${s.lab}</p>
+                <textarea class="input-area" rows="4" placeholder="Escribe aquí tu análisis técnico..."></textarea>
+                <button class="btn-submit" onclick="alert('Registro de competencia Ubuntu actualizado.')">ENVIAR SESIÓN PARA REVISIÓN</button>
+            </div>
+        </div>
+    `;
+    window.scrollTo({top: 400, behavior: 'smooth'});
+}
+
+renderNav();
+loadSession(0);
+</script>
+
+</body>
+</html>
