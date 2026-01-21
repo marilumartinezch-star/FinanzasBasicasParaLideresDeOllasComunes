@@ -3,185 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Especialización en Finanzas - Red Ubuntu Perú</title>
+    <title>Finanzas Básicas para Líderes de Ollas Comunes - Ubuntu</title>
     <style>
         :root {
             --rojo-p: #8B0000;
             --rojo-c: #FF3232;
             --oscuro: #121212;
             --dorado: #D4AF37;
-            --gris-f: #F8F9FA;
+            --gris-f: #F4F7F9;
             --blanco: #FFFFFF;
         }
 
-        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--gris-f); color: #2d3436; }
+        body { font-family: 'Inter', sans-serif; margin: 0; background: var(--gris-f); color: #333; line-height: 1.6; }
 
-        /* --- HEADER NACIONAL --- */
-        .course-hero {
-            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover; background-position: center;
-            color: white; padding: 100px 20px; text-align: center;
+        /* --- CABECERA --- */
+        header { 
+            background: linear-gradient(135deg, var(--oscuro), #2c3e50); 
+            color: white; padding: 60px 20px; text-align: center; border-bottom: 5px solid var(--rojo-p);
         }
+        .motto { font-style: italic; color: var(--dorado); font-size: 1.1rem; margin-top: 10px; display: block; letter-spacing: 1px; }
 
-        .motto { font-style: italic; color: var(--dorado); display: block; margin-top: 15px; font-size: 1rem; letter-spacing: 2px; }
-        
         /* --- NAVEGACIÓN --- */
         .session-nav {
-            display: grid; grid-template-columns: repeat(6, 1fr);
-            background: var(--oscuro); position: sticky; top: 0; z-index: 100;
+            display: flex; overflow-x: auto; background: var(--blanco); 
+            position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            justify-content: center;
         }
         .s-tab {
-            padding: 22px 10px; color: #aaa; text-align: center; cursor: pointer;
-            font-size: 0.8rem; font-weight: bold; border-bottom: 4px solid transparent; transition: 0.3s;
+            padding: 20px; cursor: pointer; font-weight: bold; font-size: 0.9rem;
+            color: #666; border-bottom: 4px solid transparent; transition: 0.3s;
         }
-        .s-tab:hover { color: white; background: #1a1a1a; }
-        .s-tab.active { color: var(--rojo-c); border-bottom: 4px solid var(--rojo-c); background: #1a1a1a; }
+        .s-tab.active { color: var(--rojo-p); border-bottom: 4px solid var(--rojo-p); background: #fffafa; }
 
         /* --- CONTENIDO --- */
-        .content-container { max-width: 950px; margin: 50px auto; padding: 0 25px; }
-        .lesson-card {
-            background: var(--blanco); border-radius: 16px; padding: 45px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08); border-top: 10px solid var(--rojo-p);
-        }
-
-        h2 { color: var(--rojo-p); font-size: 2.2rem; margin-top: 0; margin-bottom: 25px; }
-        .theory-text { line-height: 1.8; font-size: 1.15rem; color: #333; }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
         
-        .expert-quote {
-            background: #fff8e1; border-left: 5px solid var(--dorado);
-            padding: 25px; margin: 35px 0; font-style: italic; border-radius: 8px; color: #5d4037;
+        .theory-section { 
+            background: var(--blanco); border-radius: 12px; padding: 40px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px;
+            border-left: 8px solid var(--rojo-p);
+        }
+        h2 { color: var(--rojo-p); font-size: 1.8rem; margin-top: 0; }
+        h4 { color: #777; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px; }
+
+        .concept-card { 
+            background: #f9f9f9; border: 1px solid #eee; padding: 20px; 
+            border-radius: 8px; margin: 20px 0; 
+        }
+        .highlight { color: var(--rojo-p); font-weight: bold; }
+
+        /* --- SIMULACIÓN --- */
+        .sim-section { 
+            background: var(--oscuro); color: white; border-radius: 12px; padding: 35px; 
+        }
+        .sim-section h3 { color: var(--rojo-c); margin-top: 0; font-size: 1.4rem; }
+        .scenario { background: #1e1e1e; padding: 20px; border-radius: 8px; margin: 15px 0; border: 1px solid #333; }
+        
+        textarea { 
+            width: 100%; padding: 15px; border-radius: 6px; border: none; background: #2d2d2d; 
+            color: white; font-size: 1rem; margin-top: 10px; box-sizing: border-box;
         }
 
-        /* --- LAB --- */
-        .lab-box {
-            background: #1e1e1e; color: #eee; border-radius: 12px; padding: 35px; margin-top: 50px;
+        .btn-action { 
+            background: var(--rojo-c); color: white; border: none; padding: 15px 30px; 
+            width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; 
+            font-size: 1rem; margin-top: 20px; transition: 0.3s;
         }
-        .lab-box h4 { color: var(--rojo-c); margin-top: 0; text-transform: uppercase; letter-spacing: 1px; }
-        .input-area {
-            width: 100%; border: none; border-radius: 8px; padding: 18px;
-            background: #2d2d2d; color: white; font-size: 1.1rem; margin: 20px 0; box-sizing: border-box;
-        }
-        .btn-submit {
-            background: var(--rojo-c); color: white; border: none; padding: 18px;
-            border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem;
-        }
+        .btn-action:hover { background: #cc0000; transform: translateY(-2px); }
 
-        footer { text-align: center; padding: 50px; background: #eee; margin-top: 50px; }
+        footer { text-align: center; padding: 40px; color: #999; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-<div class="course-hero">
-    <h1>Finanzas Básicas para Líderes de Ollas Comunes</h1>
+<header>
+    <h4>CURSO DE ESPECIALIZACIÓN</h4>
+    <h1>FINANZAS BÁSICAS PARA LÍDERES DE OLLAS COMUNES</h1>
     <span class="motto">"Cosechando libertad, sembrando estabilidad"</span>
-</div>
+</header>
 
-<nav class="session-nav" id="sessionNav"></nav>
+<nav class="session-nav" id="nav"></nav>
 
-<div class="content-container">
-    <div id="lessonContent"></div>
+<div class="container">
+    <div id="content"></div>
 </div>
 
 <footer>
-    <p><strong>RED UBUNTU PERÚ</strong><br>Programa de Capacitación Nacional 2026</p>
+    RED UBUNTU PERÚ - 2026<br>
+    Desarrollo de Capacidades para la Gestión Comunitaria
 </footer>
 
 <script>
-const dataFinanzas = [
+const dataSesiones = [
     {
         n: "S0",
-        t: "Introducción y Ética en la Gestión Comunitaria",
-        obj: "Comprender la responsabilidad social y ética del manejo de recursos colectivos.",
-        cont: "Bienvenida a la Red Ubuntu. Esta sesión establece que una líder financiera no solo suma números, sino que protege la alimentación de su comunidad. Analizaremos el impacto de la transparencia en la confianza vecinal y la importancia de la rendición de cuentas desde el primer día de gestión.",
-        tip: "La transparencia es la herramienta más poderosa contra el conflicto comunitario.",
-        lab: "Basado en tu realidad local, ¿cuáles son los 3 mayores desafíos para mantener cuentas claras en tu organización?"
+        t: "Ética y Transparencia en la Gestión",
+        teoria: `
+            <p>La base de las finanzas en una Olla Común no son los números, sino la <strong>ética</strong>. Como líder, manejas recursos que pertenecen a todas las familias de tu comunidad.</p>
+            <div class="concept-card">
+                <strong>¿Qué es la Transparencia Activa?</strong><br>
+                Es la práctica de mostrar las cuentas antes de que alguien las pida. Esto genera un escudo protector contra rumores y fortalece la unidad del grupo.
+            </div>
+            <p>En esta sesión definiremos el "Pacto de Confianza" y cómo la organización profesional ayuda a conseguir más donaciones y apoyo del Estado.</p>
+        `,
+        sim: "Escribe 2 acciones concretas que realizarás para que cualquier vecino pueda verificar los gastos de la semana de forma fácil.",
+        placeholder: "Ejemplo: Pegar un resumen de boletas en la puerta..."
     },
     {
         n: "S1",
-        t: "Análisis de Costos: Ración y Merma",
-        obj: "Calcular con precisión el costo de producción de un plato de comida.",
-        cont: "Aprenderás a calcular el costo unitario considerando insumos directos y costos operativos (combustible, condimentos, transporte). Estudiaremos la 'Merma Técnica' para entender cuánta materia prima se pierde realmente en el proceso y cómo eso afecta tu presupuesto.",
-        tip: "Ignorar los costos 'pequeños' como el transporte es el primer paso hacia el déficit financiero.",
-        lab: "Si compras insumos para 50 raciones a un costo de S/150 y el gas cuesta S/40 mensuales, ¿cuánto debes cobrar por plato para cubrir gastos sin perder dinero?"
+        t: "Cálculo del Costo por Ración y Merma",
+        teoria: `
+            <p>Para que la olla sea sostenible, debemos saber exactamente cuánto cuesta cada plato. No solo es el arroz; es el gas, el aceite y el transporte.</p>
+            <div class="concept-card">
+                <strong>La Merma Técnica:</strong><br>
+                Es el desperdicio natural (cáscaras, huesos, limpieza). Si compras 10kg de papa, solo usas 8kg reales. <span class="highlight">Tu costo debe calcularse sobre lo que realmente se cocina.</span>
+            </div>
+            <p>Aprenderemos a sumar los costos directos e indirectos para definir una cuota justa que no genere pérdidas.</p>
+        `,
+        sim: "Si gastas S/100 en alimentos y S/20 en gas para 60 platos, ¿cuál es el costo real de cada ración? Considera que los insumos subieron un 5% por transporte.",
+        placeholder: "Realiza tu cálculo aquí..."
     },
     {
         n: "S2",
-        t: "Herramientas de Control de Caja",
-        obj: "Implementar un sistema de registro diario de ingresos y egresos.",
-        cont: "Veremos el diseño de un Libro de Caja adaptado. Aprenderás a documentar cada entrada (donaciones, cuotas, subsidios) y cada salida, asegurando que el arqueo de caja física coincida perfectamente con tus registros documentales.",
-        tip: "Un error de 10 céntimos hoy es un problema de credibilidad mañana.",
-        lab: "Simulacro: Registra un ingreso de S/200 por donación y tres gastos diferentes de mercado. Determina el saldo final de la jornada."
+        t: "Manejo del Libro de Caja Diario",
+        teoria: `
+            <p>El Libro de Caja es el corazón de tu administración. Cada sol que entra y cada sol que sale debe estar registrado con fecha y motivo.</p>
+            <div class="concept-card">
+                <strong>Reglas del Registro:</strong><br>
+                1. No anotar nada sin comprobante (boleta o recibo).<br>
+                2. Realizar el 'Arqueo de Caja' (contar dinero físico) todas las tardes.<br>
+                3. Separar el dinero personal del dinero de la Olla.
+            </div>
+        `,
+        sim: "ESCENARIO: Inicias con S/40. Recibes S/100 de cuotas. Gastas S/115 en mercado y S/10 en mototaxi. ¿Cuál es tu saldo final y qué anotaciones harías?",
+        placeholder: "Saldo inicial + Ingresos - Egresos = ..."
     },
     {
         n: "S3",
-        t: "Logística de Compras y Almacenamiento",
-        obj: "Optimizar el rendimiento del dinero mediante compras inteligentes.",
-        cont: "Aprenderás técnicas de compra por volumen y negociación con proveedores mayoristas de tu región. Estudiaremos la gestión de inventarios para evitar el desperdicio de alimentos y asegurar que el almacén esté siempre abastecido con productos de alta rotación.",
-        tip: "El ahorro real está en el mercado mayorista, no en la bodega de la esquina.",
-        lab: "Enumera 5 productos no perecibles que tu organización debería comprar por volumen para ahorrar al menos un 15% del presupuesto."
+        t: "Compras Mayoristas y Almacén",
+        teoria: `
+            <p>Una buena líder financiera sabe comprar. Comprar por kilos diarios es perder dinero. La meta es la <strong>compra por volumen</strong>.</p>
+            <div class="concept-card">
+                <strong>Gestión de Almacén:</strong><br>
+                Uso del sistema <span class="highlight">PEPS</span> (Primero en Entrar, Primero en Salir). Esto asegura que los alimentos no se venzan y que la inversión de la comunidad esté segura y bajo control.
+            </div>
+        `,
+        sim: "Compara: 1 litro de aceite cuesta S/8.50. El bidón de 20 litros cuesta S/150. ¿Cuánto dinero ahorra la olla si compra el bidón?",
+        placeholder: "Calcula el ahorro total..."
     },
     {
         n: "S4",
-        t: "Transparencia Activa: Rendición de Cuentas",
-        obj: "Diseñar estrategias visuales para informar a la asamblea de socios.",
-        cont: "La información financiera debe ser pública. Aprenderás a diseñar cuadros de mando simples y pizarras de transparencia que cualquier persona de la comunidad pueda entender, eliminando sospechas y fomentando la participación activa.",
-        tip: "Si todas ven las cuentas, todas cuidan los recursos.",
-        lab: "¿Cómo presentarías el balance del mes a una asamblea de 40 personas para que el mensaje sea claro y positivo?"
+        t: "Presupuesto y Rendición de Cuentas",
+        teoria: `
+            <p>El presupuesto es planificar el próximo mes para que no falte nada. La rendición de cuentas es el momento de liderazgo más importante: explicar los resultados a la asamblea.</p>
+            <div class="concept-card">
+                <strong>La Pizarra de Transparencia:</strong><br>
+                Una herramienta visual donde se resume: Total Ingresos | Total Gastos | Saldo Actual. La claridad elimina la sospecha.
+            </div>
+        `,
+        sim: "Diseña un mensaje corto y claro para la asamblea explicando por qué el saldo de este mes es menor debido a una reparación de la cocina.",
+        placeholder: "Escribe tu discurso o mensaje visual..."
     },
     {
         n: "S5",
-        t: "Sostenibilidad y Proyectos Productivos",
-        obj: "Identificar oportunidades para generar ingresos propios y autonomía.",
-        cont: "En la sesión final, exploraremos cómo convertir los excedentes en fondos de reserva o capital semilla. Analizaremos modelos de micro-negocios comunitarios que permitan a la Olla Común reducir su dependencia de donaciones externas.",
-        tip: "La autonomía financiera es el verdadero camino a la libertad comunitaria.",
-        lab: "Propón un micro-proyecto (ej. panadería, huerto, venta de abono) que tu organización podría iniciar con un pequeño ahorro de S/300."
+        t: "Sostenibilidad y Fondos de Reserva",
+        teoria: `
+            <p>La meta final es que la Olla Común sea <strong>autosostenible</strong>. Esto se logra creando fondos de reserva para emergencias e invirtiendo en pequeños proyectos productivos.</p>
+            <div class="concept-card">
+                <strong>Autonomía Financiera:</strong><br>
+                Es la capacidad de la organización para generar sus propios recursos sin depender exclusivamente de donaciones externas.
+            </div>
+        `,
+        sim: "¿Qué actividad pequeña (ej. venta de un producto extra) podría iniciar tu olla para generar S/100 adicionales al mes para un fondo de emergencia?",
+        placeholder: "Propón una idea de negocio comunitario..."
     }
 ];
 
-function renderNav() {
-    const nav = document.getElementById('sessionNav');
-    dataFinanzas.forEach((s, i) => {
+function init() {
+    const nav = document.getElementById('nav');
+    dataSesiones.forEach((s, i) => {
         const tab = document.createElement('div');
-        tab.className = `s-tab ${i === 0 ? 'active' : ''}`;
-        tab.innerText = s.n;
-        tab.onclick = () => loadSession(i);
+        tab.className = `s-tab ${i===0?'active':''}`;
+        tab.innerText = s.n + ": " + s.t.split(' ')[0];
+        tab.onclick = () => render(i);
         nav.appendChild(tab);
     });
+    render(0);
 }
 
-function loadSession(index) {
-    const s = dataFinanzas[index];
-    const content = document.getElementById('lessonContent');
-    document.querySelectorAll('.s-tab').forEach((t, i) => t.classList.toggle('active', i === index));
-
-    content.innerHTML = `
-        <div class="lesson-card">
-            <span style="color:var(--rojo-c); font-weight:bold; letter-spacing:1px; font-size:0.85rem;">SESIÓN ${index} | NIVEL PROFESIONAL</span>
+function render(idx) {
+    const s = dataSesiones[idx];
+    document.querySelectorAll('.s-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+    
+    document.getElementById('content').innerHTML = `
+        <div class="theory-section">
+            <h4>${s.n} | TEORÍA APLICADA</h4>
             <h2>${s.t}</h2>
-            <div class="theory-text">
-                <p><strong>OBJETIVO DEL MÓDULO:</strong> ${s.obj}</p>
-                <hr style="border:0; border-top:1px solid #eee; margin:25px 0;">
-                <p>${s.cont}</p>
-            </div>
-            
-            <div class="expert-quote">
-                <strong>PERSPECTIVA DE GESTIÓN:</strong><br>
-                "${s.tip}"
-            </div>
+            <div>${s.teoria}</div>
+        </div>
 
-            <div class="lab-box">
-                <h4>🕹️ LABORATORIO DE APLICACIÓN NACIONAL</h4>
-                <p>${s.lab}</p>
-                <textarea class="input-area" rows="4" placeholder="Escribe tu análisis técnico aquí..."></textarea>
-                <button class="btn-submit" onclick="alert('Competencia registrada en la Red Nacional Ubuntu.')">VALIDAR SESIÓN</button>
+        <div class="sim-section">
+            <h3>🕹️ LABORATORIO DE GESTIÓN</h3>
+            <div class="scenario">
+                <p><strong>RETO:</strong> ${s.sim}</p>
+                <textarea rows="4" placeholder="${s.placeholder}"></textarea>
             </div>
+            <button class="btn-action" onclick="alert('Registro guardado. ¡Excelente gestión, lideresa!')">VALIDAR APRENDIZAJE</button>
         </div>
     `;
-    window.scrollTo({top: 400, behavior: 'smooth'});
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-renderNav();
-loadSession(0);
+init();
 </script>
 
 </body>
